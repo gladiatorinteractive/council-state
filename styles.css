@@ -26,9 +26,6 @@ body {
     color: var(--green);
 }
 
-.cf-turnstile {
-    visibility: hidden;
-}
 
 /* =========================
    GRID BACKGROUND
