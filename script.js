@@ -10,9 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             selector: '.glightbox',
             loop: true,
             touchNavigation: true,
-            keyboardNavigation: true,
-            zoomable: true,
-            draggable: true
+            keyboardNavigation: true
         });
     }
 
@@ -35,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (!captchaResponse) {
-            message.textContent = 'Please complete the CAPTCHA check.';
+            message.textContent = 'Error: CAPTCHA validation failed.';
             message.className = 'newsletter-message error';
             return;
         }
@@ -61,14 +59,18 @@ document.addEventListener('DOMContentLoaded', function () {
             message.className = 'newsletter-message success';
             emailInput.value = '';
             
-            if (window.turnstile) window.turnstile.reset();
+            if (window.turnstile?.reset) {
+                window.turnstile.reset();
+            }
 
         } catch (err) {
             message.textContent = 'Error submitting email. Please try again.';
             message.className = 'newsletter-message error';
             console.error('Newsletter submission error:', err);
             
-            if (window.turnstile) window.turnstile.reset();
+            if (window.turnstile?.reset) {
+                window.turnstile.reset();
+            }
         } finally {
             setTimeout(() => {
                 if (message.className.includes('success')) {
