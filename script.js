@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
             loop: true,
             touchNavigation: true,
             keyboardNavigation: true,
-            /* Fade effect is better for high-res PNGs on mobile GPUs */
             openEffect: 'fade',
             closeEffect: 'fade',
             svg: {
@@ -49,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
         message.className = 'newsletter-message processing';
 
         try {
-            /* Standard relative path for Cloudflare Worker interception */
             const res = await fetch('/newsletter', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

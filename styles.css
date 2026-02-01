@@ -199,7 +199,6 @@ body {
     animation: flicker 1s infinite;
 }
 
-/* Grouped for efficiency */
 .section-discord, .section-newsletter, .section-socials {
     padding: 60px 20px;
     background-color: rgba(17,17,17,0.85);
@@ -329,7 +328,6 @@ body {
     .newsletter-form { flex-direction: column; }
     .newsletter-btn { width: 100%; }
 
-    /* Button stacking spacing fix */
     .button-group {
         flex-direction: column;
         align-items: center;
