@@ -1,3 +1,6 @@
+/* =========================
+   GLOBAL RESET
+   ========================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +10,8 @@
 :root {
     --dark-bg: #111111;
     --darker-bg: #0b0b0b;
-    --green: #009933;      
-    --green-bright: #00ff41; 
+    --green: #009933;
+    --green-bright: #00ff41;
     --text-light: #e5e5e5;
     --text-muted: #9a9a9a;
 }
@@ -24,12 +27,11 @@ body {
 }
 
 /* =========================
-   GRID BACKGROUND
+   BACKGROUND GRID
    ========================= */
 .background-grid {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
     background-image:
@@ -43,7 +45,7 @@ body {
     mask-size: 300% 100%;
     animation: grid-sweep 8s linear infinite;
     z-index: 5;
-    transform: translateZ(0); 
+    transform: translateZ(0);
 }
 
 /* =========================
@@ -51,7 +53,6 @@ body {
    ========================= */
 .hero {
     position: relative;
-    height: 100vh;
     height: 100dvh;
     display: flex;
     align-items: center;
@@ -75,14 +76,14 @@ body {
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at center, rgba(0, 255, 65, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(0,255,65,0.1) 0%, transparent 70%);
     z-index: 6;
     animation: overlay-pulse 5s ease-in-out infinite;
 }
 
 .hero-content {
     position: relative;
-    z-index: 10; 
+    z-index: 10;
     text-align: center;
     padding: 0 20px;
 }
@@ -93,7 +94,7 @@ body {
     color: var(--green);
     margin-bottom: 20px;
     letter-spacing: 3px;
-    animation: text-glow-breathe 5s ease-in-out infinite; 
+    animation: text-glow-breathe 5s ease-in-out infinite;
 }
 
 .hero .tagline {
@@ -106,7 +107,7 @@ body {
 }
 
 /* =========================
-   BUTTONS & GROUPS
+   BUTTONS
    ========================= */
 .button-group {
     display: flex;
@@ -140,19 +141,7 @@ body {
 .newsletter-btn:hover {
     background-color: transparent;
     color: var(--green);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
-}
-
-/* =========================
-   COMPATIBILITY FIXES (Samsung/Mobile Chrome)
-   ========================= */
-.gcontainer {
-    z-index: 999999 !important;
-}
-
-.gslide-image img {
-    image-rendering: -webkit-optimize-contrast;
-    max-width: 100vw;
+    box-shadow: 0 0 15px rgba(0,255,65,0.4);
 }
 
 /* =========================
@@ -167,16 +156,18 @@ body {
 }
 
 .center-content {
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* vertical centering added */
+    text-align: center;
     gap: 20px;
+    min-height: 100%; /* ensures full section height alignment */
 }
 
 .section-description {
     padding: 80px 20px;
-    background-color: rgba(17,17,17,0.85);  
+    background-color: rgba(17,17,17,0.85);
     border-top: 2px solid var(--green);
 }
 
@@ -191,14 +182,20 @@ body {
     color: var(--green);
     font-size: 3rem;
     font-weight: bold;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     animation: flicker 1s infinite;
 }
 
-.section-discord, .section-newsletter, .section-socials {
+.section-discord,
+.section-newsletter,
+.section-socials {
     padding: 60px 20px;
-    background-color: rgba(17,17,17,0.85);
     border-top: 2px solid var(--green);
+}
+
+.section-discord,
+.section-socials {
+    background-color: rgba(17,17,17,0.85);
 }
 
 .section-newsletter {
@@ -228,7 +225,6 @@ body {
     line-height: 1;
 }
 
-
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -239,7 +235,7 @@ body {
     width: 100%;
     height: auto;
     border: 1px solid #333;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
     filter: brightness(0.8);
 }
 
@@ -247,7 +243,7 @@ body {
     transform: scale(1.02);
     border-color: var(--green);
     filter: brightness(1);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    box-shadow: 0 0 15px rgba(0,255,65,0.2);
 }
 
 /* =========================
@@ -258,10 +254,9 @@ body {
     gap: 10px;
     width: 100%;
     max-width: 500px;
-    margin-top: 5px;
     justify-content: center;
     position: relative;
-    z-index: 20; 
+    z-index: 20;
     background-color: transparent;
     padding: 0;
 }
@@ -279,11 +274,15 @@ body {
 
 .newsletter-form input:focus {
     outline: none;
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+    box-shadow: 0 0 15px rgba(0,255,65,0.4);
 }
 
 .newsletter-form .cf-turnstile {
-    display: none !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    left: -9999px !important;
 }
 
 .newsletter-message {
@@ -306,8 +305,16 @@ body {
     text-align: center;
 }
 
-.footer p { margin: 5px 0; color: var(--text-muted); font-size: 0.9rem; }
-.footer a { color: var(--green); text-decoration: none; }
+.footer p {
+    margin: 5px 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--green);
+    text-decoration: none;
+}
 
 /* =========================
    ANIMATIONS
@@ -320,8 +327,8 @@ body {
 }
 
 @keyframes text-glow-breathe {
-    0%, 100% { text-shadow: 0 0 15px rgba(0, 255, 65, 0.3), 0 0 30px rgba(0, 255, 65, 0.1); }
-    50% { text-shadow: 0 0 30px rgba(0, 255, 65, 0.6), 0 0 60px rgba(0, 255, 65, 0.3); }
+    0%, 100% { text-shadow: 0 0 15px rgba(0,255,65,0.3), 0 0 30px rgba(0,255,65,0.1); }
+    50% { text-shadow: 0 0 30px rgba(0,255,65,0.6), 0 0 60px rgba(0,255,65,0.3); }
 }
 
 @keyframes overlay-pulse { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.3; } }
@@ -341,6 +348,7 @@ body {
         align-items: center;
         gap: 20px;
     }
+
     .button-group a, .cta-button {
         width: 100%;
         text-align: center;
@@ -350,7 +358,7 @@ body {
 }
 
 @media (max-width: 900px) and (orientation: landscape) {
-    .hero { min-height: 100vh; } 
-    .hero h1 { font-size: 2.5rem; } 
+    .hero { min-height: 100vh; }
+    .hero h1 { font-size: 2.5rem; }
     .section-description { padding: 40px 20px; }
 }
