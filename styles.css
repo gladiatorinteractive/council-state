@@ -20,6 +20,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    -webkit-font-smoothing: antialiased;
 }
 
 .divider {
@@ -47,6 +48,8 @@ body {
     mask-size: 300% 100%;
     animation: grid-sweep 8s linear infinite;
     z-index: 5;
+    transform: translateZ(0); 
+    will-change: mask-position;
 }
 
 /* =========================
@@ -55,6 +58,7 @@ body {
 .hero {
     position: relative;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,11 +70,13 @@ body {
 .parallax-bg {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('header.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     z-index: 1;
     filter: brightness(0.3) saturate(0.5);
+    will-change: transform;
 }
 
 .hero-overlay {
@@ -86,6 +92,7 @@ body {
     z-index: 10; 
     text-align: center;
     padding: 0 20px;
+    width: 100%;
 }
 
 .hero h1 {
@@ -224,6 +231,7 @@ body {
     border: 1px solid #333;
     transition: transform 0.3s ease, border-color 0.3s ease;
     filter: brightness(0.8);
+    display: block; 
 }
 
 .gallery-item img:hover {
@@ -266,6 +274,15 @@ body {
     outline: none;
     box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
 }
+
+.newsletter-message {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    min-height: 1.5em;
+}
+.newsletter-message.success { color: var(--green-bright); }
+.newsletter-message.error { color: #ff3333; }
+.newsletter-message.processing { color: var(--text-muted); }
 
 /* =========================
    FOOTER
@@ -322,10 +339,20 @@ body {
    MEDIA QUERIES
    ========================= */
 @media (max-width: 768px) {
-    .parallax-bg { background-attachment: scroll; }
     .hero h1 { font-size: 2.5rem; }
     .section-wishlist h2 { font-size: 2.5rem; }
     .newsletter-form { flex-direction: column; }
     .cta-button--large,
     .newsletter-btn { width: 100%; }
+   
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 900px) and (orientation: landscape) {
+    .hero { min-height: 100vh; } 
+    .hero h1 { font-size: 2.5rem; } 
+    .section-description { padding: 40px 20px; }
 }
