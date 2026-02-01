@@ -282,6 +282,10 @@ body {
     box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
 }
 
+.newsletter-form .cf-turnstile {
+    display: none !important;
+}
+
 .newsletter-message {
     margin-top: 15px;
     font-size: 0.9rem;
