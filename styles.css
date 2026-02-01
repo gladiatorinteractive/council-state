@@ -23,10 +23,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.divider {
-    color: var(--green);
-}
-
 /* =========================
    GRID BACKGROUND
    ========================= */
@@ -224,6 +220,14 @@ body {
     color: var(--text-light);
     line-height: 1.8;
 }
+
+.description-text .divider {
+    color: var(--green);
+    font-size: 1.5rem;
+    margin: 15px 0;
+    line-height: 1;
+}
+
 
 .gallery-grid {
     display: grid;
