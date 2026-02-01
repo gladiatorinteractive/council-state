@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         message.className = 'newsletter-message processing';
 
         try {
-            const res = await fetch('https://councilstate.com/newsletter', {
+            const res = await fetch('/newsletter', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
