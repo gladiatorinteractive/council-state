@@ -27,7 +27,6 @@ body {
     color: var(--green);
 }
 
-
 /* =========================
    GRID BACKGROUND
    ========================= */
@@ -132,6 +131,19 @@ body {
 /* =========================
    BUTTONS
    ========================= */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Spacing between buttons */
+    justify-content: center;
+    width: 100%;
+}
+
+.button-group a {
+    text-decoration: none;
+    display: inline-block;
+}
+
 .cta-button,
 .newsletter-btn {
     padding: 15px 40px;
@@ -152,10 +164,6 @@ body {
     background-color: transparent;
     color: var(--green);
     box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
-}
-.cta-button--large {
-    padding: 18px 60px;
-    font-size: 1.25rem;
 }
 
 /* =========================
@@ -338,9 +346,22 @@ body {
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.5rem; }
     .section-wishlist h2 { font-size: 2.5rem; }
+    
     .newsletter-form { flex-direction: column; }
-    .cta-button--large,
     .newsletter-btn { width: 100%; }
+
+    /* Fix Social Buttons Stacking with Spacing */
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    .button-group a {
+        width: 100%;
+    }
+    .cta-button {
+        width: 100%;
+    }
+
     .parallax-bg { background-attachment: scroll; }
 }
 
